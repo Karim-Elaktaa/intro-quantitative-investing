@@ -1,4 +1,4 @@
-setwd("/home/kelaktaa/dev/MOOCs/quantitative-investing/week1/")
+setwd("/home/kelaktaa/dev/MOOCs/quantitative-investing/data/")
 
 # Read data
 SP500 <- read.csv(file = "SP500Data.csv")
