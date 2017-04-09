@@ -72,3 +72,7 @@ sprintf ("Portfolio variance (geo sd) %f", portfolio.variance)
 # Portfolio risk (standard deviation)
 portfolio.risk <- portfolio.variance ^ 0.5
 sprintf ("Portfolio risk %f", portfolio.risk)
+
+# Portfolio return data series
+portfolio.return.series <- risky.weight * monthly.return + (1 - risky.weight) * riskfree.return
+head(portfolio.return.series, n=10)
