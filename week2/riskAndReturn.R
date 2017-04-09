@@ -4,7 +4,7 @@ setwd("/home/kelaktaa/dev/MOOCs/quantitative-investing/data/")
 spData <- read.csv(file = "SP500Data.csv")
 
 # Get only close column of the data
-price <- SP500$Close
+price <- spData$Close
 head(price, n=10)
 
 gain <- price[1:(length(price) - 1)]
