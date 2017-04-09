@@ -57,9 +57,13 @@ risk.free.standarddeviation <- 0
 # 70% of the portfolio is risky asset
 risky.weight <- 0.7
 
-# Portfolio return = weighted return
+# Portfolio return = weighted return [with arithmetic mean]
+portfolio.return <- risky.weight * mean.monthly.return + (1 - risky.weight) * riskfree.return
+sprintf ("Portfolio return (artih mean) %f", portfolio.return)
+
+# Portfolio return = weighted return [with geometric mean]
 portfolio.return <- risky.weight * geometric.mean.monthly.return + (1 - risky.weight) * riskfree.return
-sprintf ("Portfolio return %f", portfolio.return)
+sprintf ("Portfolio return (geo mean) %f", portfolio.return)
 
 # Portfolio variance [risk free assets variance = 0] (with arthimetic sd)
 portfolio.variance <- risky.weight ^ 2  * sd.monthly.return ^ 2
