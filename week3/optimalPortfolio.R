@@ -72,3 +72,5 @@ for (i in 1:length(w)) {
    }
 }
 portfolio.result
+
+save(portfolio.result, file="PortfolioResult.RData")
