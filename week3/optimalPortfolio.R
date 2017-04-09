@@ -52,3 +52,23 @@ sprintf("Portfolio return %f -- %f%%", portfolio.return, portfolio.return * 100)
 # Portfolio risk
 portfolio.risk <- sqrt(w ^ 2 * spData.monthly.sd ^ 2 + (1 - w)^2 * nasdaq.monthly.sd ^ 2 + 2 * w * (1 - w) * sp.nasdaq.covariance)
 sprintf("Portfolio risk %f -- %f%%", portfolio.risk, portfolio.risk * 100)
+
+# Finding the optimal portfolio
+w <- seq(0, 1, 0.1)
+
+for (i in 1:length(w)) {
+# Compute return
+   this.port.return <- w[i] * spData.monthly.return + (1 - w[i]) * nasdaq.monthly.return
+# Compute risk
+   this.port.risk <- sqrt(w[i]^2 * spData.monthly.sd^2 + (1-w[i])^2 * nasdaq.monthly.sd^2 + 2*w[i]*(1-w[i])*sp.nasdaq.covariance)
+# Bind the result   
+   this.port.stat <- cbind(w[i], 1-w[i], this.port.return, this.port.risk)
+   
+   if (i == 1) {
+      portfolio.result <- this.port.stat
+   } else {
+# add the current result to all results
+      portfolio.result <- rbind(portfolio.result, this.port.stat)   
+   }
+}
+portfolio.result
