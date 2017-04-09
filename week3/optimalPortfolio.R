@@ -43,3 +43,12 @@ sprintf("SP500 & NASDAQ covariance %f", sp.nasdaq.covariance)
 # Correlation
 sp.nasdaq.correlation <- cor(monthly.return$SP500, monthly.return$NASDAQ)
 sprintf("SP500 & NASDAQ correlation %f", sp.nasdaq.correlation)
+
+# Unoptimized portfolio
+w <- 0.6 # weight
+# Portfolio return
+portfolio.return <- w * spData.monthly.return + (1 - w) * nasdaq.monthly.return
+sprintf("Portfolio return %f -- %f%%", portfolio.return, portfolio.return * 100)
+# Portfolio risk
+portfolio.risk <- sqrt(w ^ 2 * spData.monthly.sd ^ 2 + (1 - w)^2 * nasdaq.monthly.sd ^ 2 + 2 * w * (1 - w) * sp.nasdaq.covariance)
+sprintf("Portfolio risk %f -- %f%%", portfolio.risk, portfolio.risk * 100)
