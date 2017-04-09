@@ -35,3 +35,11 @@ nasdaq.monthly.sd <- sd(monthly.return$NASDAQ)
 nasdaq.monthly.geosd <- (sum((monthly.return$NASDAQ - nasdaq.monthly.return)^2)/number.month)^0.5
 sprintf("NASDAQ arithmetic Standard deviation %f", nasdaq.monthly.sd)
 sprintf("NASDAQ geometric Standard deviation %f", nasdaq.monthly.geosd)
+
+# Covariance
+sp.nasdaq.covariance <- cov(monthly.return$SP500, monthly.return$NASDAQ)
+sprintf("SP500 & NASDAQ covariance %f", sp.nasdaq.covariance)
+
+# Correlation
+sp.nasdaq.correlation <- cor(monthly.return$SP500, monthly.return$NASDAQ)
+sprintf("SP500 & NASDAQ correlation %f", sp.nasdaq.correlation)
