@@ -76,3 +76,9 @@ sprintf ("Portfolio risk %f", portfolio.risk)
 # Portfolio return data series
 portfolio.return.series <- risky.weight * monthly.return + (1 - risky.weight) * riskfree.return
 head(portfolio.return.series, n=10)
+
+# Portfolio return mean
+mean(portfolio.return.series)
+
+# Portfolio return standard deviation
+sd(portfolio.return.series)
