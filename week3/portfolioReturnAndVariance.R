@@ -61,8 +61,14 @@ risky.weight <- 0.7
 portfolio.return <- risky.weight * geometric.mean.monthly.return + (1 - risky.weight) * riskfree.return
 sprintf ("Portfolio return %f", portfolio.return)
 
-portfolio.variance <- risky.weight ^ 2  * geometric.monthly.standarddeviation ^ 2
-sprintf ("Portfolio variance %f", portfolio.variance)
+# Portfolio variance [risk free assets variance = 0] (with arthimetic sd)
+portfolio.variance <- risky.weight ^ 2  * sd.monthly.return ^ 2
+sprintf ("Portfolio variance (arith sd) %f", portfolio.variance)
 
+# Portfolio variance [risk free assets variance = 0] (with geometric sd)
+portfolio.variance <- risky.weight ^ 2  * geometric.monthly.standarddeviation ^ 2
+sprintf ("Portfolio variance (geo sd) %f", portfolio.variance)
+
+# Portfolio risk (standard deviation)
 portfolio.risk <- portfolio.variance ^ 0.5
-sprintf ("Portfolio return %f", portfolio.risk)
+sprintf ("Portfolio risk %f", portfolio.risk)
