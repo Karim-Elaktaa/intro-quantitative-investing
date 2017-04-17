@@ -24,3 +24,5 @@ monthly.risk.premium <- data.frame(monthly.return$SP500 - monthly.tbill,
                                    monthly.return$AAPL - monthly.tbill)
 colnames(monthly.risk.premium) <- c("SP500 RP", "AAPL RP")
 head(monthly.risk.premium, n=4)
+
+plot(monthly.risk.premium, main="Risk Premium of SP500 and Apple")
