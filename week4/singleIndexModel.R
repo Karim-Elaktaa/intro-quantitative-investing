@@ -25,8 +25,6 @@ monthly.risk.premium <- data.frame(monthly.return$SP500 - monthly.tbill,
 colnames(monthly.risk.premium) <- c("SP500", "AAPL")
 head(monthly.risk.premium, n=4)
 
-plot(monthly.risk.premium, main="Risk Premium of SP500 and Apple")
-
 # Linear Regression
 # AAPL = dependent variable
 # SP500 = independent variable
@@ -34,3 +32,6 @@ index.model.aapl <- lm(AAPL ~ SP500, data = monthly.risk.premium)
 # beta = 1.243695 [beta > 1 => high beta stock || beta < 1 => low beta stock]
 # alpha = 0.008759
 summary(index.model.aapl)
+
+plot(monthly.risk.premium, main="Risk Premium of SP500 and Apple Regression")
+abline(index.model.aapl)
