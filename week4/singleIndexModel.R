@@ -15,3 +15,12 @@ gain <- price[1:(dim(price)[1] - 1),]
 cost <- price[2:(dim(price)[1]),]
 
 monthly.return <- (gain - cost) / cost
+
+# Annualize T-Bill
+monthly.tbill <- (1 + tbill$X3MTbill) ^ (1/12) -1
+
+# Monthly risk premium
+monthly.risk.premium <- data.frame(monthly.return$SP500 - monthly.tbill,
+                                   monthly.return$AAPL - monthly.tbill)
+colnames(monthly.risk.premium) <- c("SP500 RP", "AAPL RP")
+head(monthly.risk.premium, n=4)
