@@ -25,18 +25,8 @@ monthly.risk.premium <- data.frame(monthly.return$SP500 - monthly.tbill,
 colnames(monthly.risk.premium) <- c("SP500", "AAPL")
 head(monthly.risk.premium, n=4)
 
-# Linear Regression
-# AAPL = dependent variable
-# SP500 = independent variable
-index.model.aapl <- lm(AAPL ~ SP500, data = monthly.risk.premium)
-# beta = 1.243695 [beta > 1 => high beta stock || beta < 1 => low beta stock]
-# alpha = 0.008759
-summary(index.model.aapl)
+standard.deviation.AAPL <- sd(monthly.return$AAPL)
+sprintf("AAPL standard deviation %f", standard.deviation.AAPL)
+standard.deviation.sp <- sd(monthly.return$SP500)
+sprintf("SP500 standard deviation %f", standard.deviation.sp)
 
-plot(monthly.risk.premium[1:60, "SP500"], type="l",
-     col="blue", main="Return on S&P 500 and Apple",
-     ylab="Monthly Excess Return", xlab="Observation Month")
-lines(monthly.risk.premium[1:60, "AAPL"], col="red")
-
-plot(monthly.risk.premium, main="Risk Premium of SP500 and Apple Regression")
-abline(index.model.aapl)
