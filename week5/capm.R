@@ -30,3 +30,5 @@ sprintf("AAPL standard deviation %f", standard.deviation.AAPL)
 standard.deviation.sp <- sd(monthly.return$SP500)
 sprintf("SP500 standard deviation %f", standard.deviation.sp)
 
+covariance.AAPL.sp <- cov(monthly.return$AAPL, monthly.return$SP500)
+sprintf("AAPL & SP500 return covariance %f", covariance.AAPL.sp)
