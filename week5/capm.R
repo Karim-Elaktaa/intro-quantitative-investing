@@ -15,7 +15,6 @@ gain <- price[1:(dim(price)[1] - 1),]
 cost <- price[2:(dim(price)[1]),]
 
 monthly.return <- (gain - cost) / cost
-
 # Annualize T-Bill
 monthly.tbill <- (1 + tbill$X3MTbill) ^ (1/12) -1
 
@@ -35,3 +34,11 @@ sprintf("AAPL & SP500 return covariance %f", covariance.AAPL.sp)
 
 beta.AAPL <- covariance.AAPL.sp/standard.deviation.sp^2
 sprintf("AAPL beta value %f", beta.AAPL)
+
+# CAPM
+# risk free rate 0.2%
+rf <- 0.2
+# market expectation 1%
+market <- 1;
+expected.return.AAPL <- rf + beta.AAPL * (market - rf)
+sprintf("Expected return on AAPL %f", expected.return.AAPL)
